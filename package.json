@@ -1,0 +1,23 @@
+{
+  "name": "universal-ui",
+  "version": "0.0.0",
+  "esy": {
+    "build": "dune build @all"
+  },
+  "scripts": {
+    "start": "#{self.target_dir}/default/bin/hello.exe",
+    "watch": "esy @ios.simulator.x86_64 b dune build @all -x ios.simulator.x86_64 --watch"
+  },
+  "dependencies": {
+    "@esy-ocaml/reason": "^3.5.2",
+    "@opam/dune": "^2.8.2",
+    "ocaml": "~4.10.x",
+    "brisk-reconciler": "github:briskml/brisk-reconciler",
+    "graphql-ppx": "github:reasonml-community/graphql-ppx#200310436aa8cf4cb53202def0bcf0e17f281062",
+    "@opam/lwt": "*"
+  },
+  "devDependencies": {
+    "@opam/ocaml-lsp-server": "1.4.0",
+    "generate": "github:EduardoRFS/reason-mobile:generate.json#543d302e3eb565abb2af640860789f3f9cffc15f"
+  }
+}

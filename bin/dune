@@ -1,0 +1,8 @@
+(executable
+ (name hello)
+ (modules Hello NativeComponents Objc React Benchmarks GraphQL)
+ (libraries brisk-reconciler lwt)
+ (modes
+  (native object))
+ (preprocess
+  (pps brisk-reconciler.ppx graphql_ppx)))

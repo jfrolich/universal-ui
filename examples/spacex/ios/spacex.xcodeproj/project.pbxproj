@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E4747F32595B92B00F9814B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4747F22595B92B00F9814B /* UIKit.framework */; };
+		8EA772F62549AA6E00E65D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA772F52549AA6E00E65D61 /* Assets.xcassets */; };
+		8EA772F92549AA6E00E65D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA772F72549AA6E00E65D61 /* LaunchScreen.storyboard */; };
+		8EA772FC2549AA6E00E65D61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA772FB2549AA6E00E65D61 /* main.m */; };
+		8EC9E6FE25E152C400FA7314 /* hello.exe.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC9E6FD25E152B800FA7314 /* hello.exe.o */; };
+		8ECCADBC256FF23800B38D01 /* ocaml_objc_stubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECCADBB256FF23800B38D01 /* ocaml_objc_stubs.m */; };
+		8ECCADC3256FF42700B38D01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECCADC2256FF42700B38D01 /* Foundation.framework */; };
+		8EF973252558EA1E00492284 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E655E2A2556817A00FA1130 /* libresolv.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8E4747F22595B92B00F9814B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8E4747F52595B9AA00F9814B /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = "../../hello-reason/_esy/ios.arm64/store/b/ios.arm64-277b1f4b/default.ios.arm64/bin/hello.exe.o"; sourceTree = "<group>"; };
+		8E4747F62595B9D800F9814B /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = "../../hello-reason/_esy/ios.arm64/store/b/ios.arm64-277b1f4b/default/bin/hello.exe.o"; sourceTree = "<group>"; };
+		8E4747FB2595C62100F9814B /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = "../../hello-reason/hello.exe.o"; sourceTree = "<group>"; };
+		8E655E2A2556817A00FA1130 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		8E7AE886257BE1E600C42E9E /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = "../../hello-reason/_esy/ios.simulator.x86_64/store/b/ios.simulator.x86__64-3f05181f/default.ios.simulator.x86_64/bin/hello.exe.o"; sourceTree = "<group>"; };
+		8EA772E62549AA6C00E65D61 /* reason-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reason-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA772F52549AA6E00E65D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8EA772F82549AA6E00E65D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8EA772FA2549AA6E00E65D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EA772FB2549AA6E00E65D61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8EC9E6F725DF82C000FA7314 /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = "../../examples/hello-reason/hello.exe.o"; sourceTree = "<group>"; };
+		8EC9E6FD25E152B800FA7314 /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = ../../../hello.exe.o; sourceTree = "<group>"; };
+		8ECCADB3256E2B9B00B38D01 /* hello.exe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = hello.exe.o; path = "../../hello-reason/_esy/ios.simulator.x86_64/store/b/ios.simulator.x86__64-c5558e9e/default.ios.simulator.x86_64/bin/hello.exe.o"; sourceTree = "<group>"; };
+		8ECCADBB256FF23800B38D01 /* ocaml_objc_stubs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ocaml_objc_stubs.m; sourceTree = "<group>"; };
+		8ECCADC2256FF42700B38D01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8EA772E32549AA6C00E65D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EC9E6FE25E152C400FA7314 /* hello.exe.o in Frameworks */,
+				8ECCADC3256FF42700B38D01 /* Foundation.framework in Frameworks */,
+				8E4747F32595B92B00F9814B /* UIKit.framework in Frameworks */,
+				8EF973252558EA1E00492284 /* libresolv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E655E2225567EAE00FA1130 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E4747F52595B9AA00F9814B /* hello.exe.o */,
+				8E4747F62595B9D800F9814B /* hello.exe.o */,
+				8E4747FB2595C62100F9814B /* hello.exe.o */,
+				8EC9E6F725DF82C000FA7314 /* hello.exe.o */,
+				8EC9E6FD25E152B800FA7314 /* hello.exe.o */,
+				8E4747F22595B92B00F9814B /* UIKit.framework */,
+				8E7AE886257BE1E600C42E9E /* hello.exe.o */,
+				8ECCADC2256FF42700B38D01 /* Foundation.framework */,
+				8ECCADB3256E2B9B00B38D01 /* hello.exe.o */,
+				8E655E2A2556817A00FA1130 /* libresolv.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EA772DD2549AA6C00E65D61 = {
+			isa = PBXGroup;
+			children = (
+				8EA772E82549AA6C00E65D61 /* spacex */,
+				8EA772E72549AA6C00E65D61 /* Products */,
+				8E655E2225567EAE00FA1130 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8EA772E72549AA6C00E65D61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EA772E62549AA6C00E65D61 /* reason-mobile.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8EA772E82549AA6C00E65D61 /* spacex */ = {
+			isa = PBXGroup;
+			children = (
+				8EA772F52549AA6E00E65D61 /* Assets.xcassets */,
+				8EA772F72549AA6E00E65D61 /* LaunchScreen.storyboard */,
+				8EA772FA2549AA6E00E65D61 /* Info.plist */,
+				8EA772FB2549AA6E00E65D61 /* main.m */,
+				8ECCADBB256FF23800B38D01 /* ocaml_objc_stubs.m */,
+			);
+			path = spacex;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8EA772E52549AA6C00E65D61 /* reason-mobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EA772FF2549AA6E00E65D61 /* Build configuration list for PBXNativeTarget "reason-mobile" */;
+			buildPhases = (
+				8E4748002595CE7B00F9814B /* Create universal object file */,
+				8EA772E22549AA6C00E65D61 /* Sources */,
+				8EA772E32549AA6C00E65D61 /* Frameworks */,
+				8EA772E42549AA6C00E65D61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "reason-mobile";
+			productName = "reason-mobile";
+			productReference = 8EA772E62549AA6C00E65D61 /* reason-mobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8EA772DE2549AA6C00E65D61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					8EA772E52549AA6C00E65D61 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+				};
+			};
+			buildConfigurationList = 8EA772E12549AA6C00E65D61 /* Build configuration list for PBXProject "spacex" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8EA772DD2549AA6C00E65D61;
+			productRefGroup = 8EA772E72549AA6C00E65D61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8EA772E52549AA6C00E65D61 /* reason-mobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8EA772E42549AA6C00E65D61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EA772F92549AA6E00E65D61 /* LaunchScreen.storyboard in Resources */,
+				8EA772F62549AA6E00E65D61 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E4748002595CE7B00F9814B /* Create universal object file */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create universal object file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/hello.exe.o",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../../..\nsource build-universal.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8EA772E22549AA6C00E65D61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ECCADBC256FF23800B38D01 /* ocaml_objc_stubs.m in Sources */,
+				8EA772FC2549AA6E00E65D61 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8EA772F72549AA6E00E65D61 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EA772F82549AA6E00E65D61 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8EA772FD2549AA6E00E65D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = (
+					/Users/Jaap/.opam/4.10.0/lib/ocaml,
+					/Users/Jaap/.opam/4.10.0/lib/ctypes,
+				);
+			};
+			name = Debug;
+		};
+		8EA772FE2549AA6E00E65D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = (
+					/Users/Jaap/.opam/4.10.0/lib/ocaml,
+					/Users/Jaap/.opam/4.10.0/lib/ctypes,
+				);
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8EA773002549AA6E00E65D61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RYVC828DXK;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				INFOPLIST_FILE = "spacex/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../hello-reason/_esy/ios.simulator.x86_64/build/default.ios.simulator.x86_64/bin";
+				PRODUCT_BUNDLE_IDENTIFIER = "app.reason-mobile.reason-mobile";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8EA773012549AA6E00E65D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RYVC828DXK;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				INFOPLIST_FILE = "spacex/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../hello-reason/_esy/ios.simulator.x86_64/build/default.ios.simulator.x86_64/bin";
+				PRODUCT_BUNDLE_IDENTIFIER = "app.reason-mobile.reason-mobile";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8EA772E12549AA6C00E65D61 /* Build configuration list for PBXProject "spacex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EA772FD2549AA6E00E65D61 /* Debug */,
+				8EA772FE2549AA6E00E65D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EA772FF2549AA6E00E65D61 /* Build configuration list for PBXNativeTarget "reason-mobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EA773002549AA6E00E65D61 /* Debug */,
+				8EA773012549AA6E00E65D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8EA772DE2549AA6C00E65D61 /* Project object */;
+}

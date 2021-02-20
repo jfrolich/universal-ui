@@ -1,0 +1,108 @@
+{
+  "dependencies": {
+    "@esy-ocaml/reason": "^3.5.2",
+    "@opam/dune": "^2.3.1",
+    "@reason-native/console": "^0.1.0",
+    "@reason-native/pastel": "^0.3.0",
+    "ocaml": "~4.10.0",
+    "generate":
+      "github:EduardoRFS/reason-mobile:generate.json#66f694b2d083624a4f971f897441b106585783e7",
+    "@_android.arm64/_esy_ocaml_reason": "*",
+    "@_android.arm64/_opam_dune": "*",
+    "@_android.arm64/_reason_native_console": "*",
+    "@_android.arm64/_reason_native_pastel": "*",
+    "@_android.arm64/generate": "*",
+    "@_android.arm64/ocaml": "*",
+    "@_android.arm64/sysroot": "*",
+    "generate": "*"
+  },
+  "resolutions": {
+    "generate":
+      "github:EduardoRFS/reason-mobile:generate.json#66f694b2d083624a4f971f897441b106585783e7",
+    "yarn-pkg-config":
+      "github:esy-ocaml/yarn-pkg-config#db3a0b63883606dd57c54a7158d560d6cba8cd79",
+    "@_android.arm64/_esy_ocaml_reason": ".mocks/93eeef25/esy.json",
+    "@_android.arm64/_esy_ocaml_substs": ".mocks/cfdd9ca4/esy.json",
+    "@_android.arm64/_opam_base_bytes": ".mocks/4129647b/esy.json",
+    "@_android.arm64/_opam_base_threads": ".mocks/efd0d406/esy.json",
+    "@_android.arm64/_opam_base_unix": ".mocks/1c06b844/esy.json",
+    "@_android.arm64/_opam_bigarray_compat": ".mocks/ffcca3ec/esy.json",
+    "@_android.arm64/_opam_biniou": ".mocks/c12fb8f0/esy.json",
+    "@_android.arm64/_opam_conf_m4": ".mocks/cd9208e5/esy.json",
+    "@_android.arm64/_opam_conf_pkg_config": ".mocks/608b1b29/esy.json",
+    "@_android.arm64/_opam_cppo": ".mocks/2c41dff5/esy.json",
+    "@_android.arm64/_opam_csexp": ".mocks/73564423/esy.json",
+    "@_android.arm64/_opam_cstruct": ".mocks/05aa90f1/esy.json",
+    "@_android.arm64/_opam_dune_configurator": ".mocks/78690800/esy.json",
+    "@_android.arm64/_opam_dune": ".mocks/71f3ff3f/esy.json",
+    "@_android.arm64/_opam_easy_format": ".mocks/f7504c3e/esy.json",
+    "@_android.arm64/_opam_eqaf": ".mocks/206c0cf6/esy.json",
+    "@_android.arm64/_opam_fix": ".mocks/45f5cacf/esy.json",
+    "@_android.arm64/_opam_hex": ".mocks/532b118f/esy.json",
+    "@_android.arm64/_opam_lwt": ".mocks/50c7600e/esy.json",
+    "@_android.arm64/_opam_menhir": ".mocks/54d2e472/esy.json",
+    "@_android.arm64/_opam_menhirLib": ".mocks/af689c99/esy.json",
+    "@_android.arm64/_opam_menhirSdk": ".mocks/55c43ca4/esy.json",
+    "@_android.arm64/_opam_merlin_extend": ".mocks/bf1c93f3/esy.json",
+    "@_android.arm64/_opam_mirage_crypto": ".mocks/b95acc3c/esy.json",
+    "@_android.arm64/_opam_mmap": ".mocks/fbe0e768/esy.json",
+    "@_android.arm64/_opam_ocaml_migrate_parsetree":
+      ".mocks/8cbfb3d7/esy.json",
+    "@_android.arm64/_opam_ocamlfind": ".mocks/1d0de27c/esy.json",
+    "@_android.arm64/_opam_ocplib_endian": ".mocks/124e9266/esy.json",
+    "@_android.arm64/_opam_ppx_derivers": ".mocks/d92ee659/esy.json",
+    "@_android.arm64/_opam_ppx_deriving": ".mocks/3e4958a5/esy.json",
+    "@_android.arm64/_opam_ppx_deriving_yojson": ".mocks/06e83399/esy.json",
+    "@_android.arm64/_opam_ppx_tools": ".mocks/3b0c25be/esy.json",
+    "@_android.arm64/_opam_ppxfind": ".mocks/b815b5aa/esy.json",
+    "@_android.arm64/_opam_re": ".mocks/4267ef8c/esy.json",
+    "@_android.arm64/_opam_result": ".mocks/92ab4284/esy.json",
+    "@_android.arm64/_opam_seq": ".mocks/1a3435a1/esy.json",
+    "@_android.arm64/_opam_yojson": ".mocks/3183b75a/esy.json",
+    "@_android.arm64/_reason_native_console": ".mocks/bb6ccd20/esy.json",
+    "@_android.arm64/_reason_native_pastel": ".mocks/04dbbd61/esy.json",
+    "@_android.arm64/generate": ".mocks/d2916f85/esy.json",
+    "@_android.arm64/hello_reason": ".mocks/1cb4a0cc/esy.json",
+    "@_android.arm64/ocaml": ".mocks/a59d86c3/esy.json",
+    "@_android.arm64/yarn_pkg_config": ".mocks/75001831/esy.json",
+    "sysroot.tools": ".mocks/a9099116/package.json",
+    "@_android.arm64/sysroot": ".mocks/c6745f74/package.json",
+    "@_android/ndk": ".mocks/90c4de03/package.json"
+  },
+  "esy": {
+    "buildsInSource": false,
+    "buildEnv": {
+      "cur__etc":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/etc",
+      "cur__share":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/share",
+      "cur__toplevel":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/toplevel",
+      "cur__stublibs":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/stublibs",
+      "cur__doc":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/doc",
+      "cur__man":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/man",
+      "cur__lib":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/lib",
+      "cur__sbin":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/sbin",
+      "cur__bin":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791/bin",
+      "cur__install":
+        "#{self.original_root}/android.arm64-sysroot/_esy/default/store/i/hello_reason-13bb5791",
+      "cur__original_root": "#{self.original_root}/android.arm64-sysroot",
+      "OCAMLFIND_CONF": "%{store}%/findlib/#{self.id}/findlib.conf",
+      "OCAMLFIND_DESTDIR": "#{self.install}/android.arm64-sysroot/lib",
+      "TOPKG_CONF_TOOLCHAIN": "android.arm64",
+      "OCAMLLIB": null,
+      "OCAMLPATH": null
+    },
+    "exportedEnv": {},
+    "build": [
+      [ "dune", "build", "@all", "-x", "android.arm64", "@install" ]
+    ],
+    "install": []
+  }
+}

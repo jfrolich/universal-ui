@@ -1,0 +1,188 @@
+{
+  "dependencies": {
+    "@esy-ocaml/reason": "^3.5.2",
+    "@opam/dune": "^2.8.2",
+    "@opam/lwt": "*",
+    "brisk-reconciler": "github:briskml/brisk-reconciler",
+    "graphql-ppx":
+      "github:reasonml-community/graphql-ppx#200310436aa8cf4cb53202def0bcf0e17f281062",
+    "ocaml": "~4.10.x",
+    "@opam/ocaml-lsp-server": "1.4.0",
+    "generate":
+      "github:EduardoRFS/reason-mobile:generate.json#543d302e3eb565abb2af640860789f3f9cffc15f",
+    "@_ios.simulator.x86_64/_esy_ocaml_reason": "*",
+    "@_ios.simulator.x86_64/_opam_dune": "*",
+    "@_ios.simulator.x86_64/_opam_lwt": "*",
+    "@_ios.simulator.x86_64/_opam_ocaml_lsp_server": "*",
+    "@_ios.simulator.x86_64/brisk_reconciler": "*",
+    "@_ios.simulator.x86_64/generate": "*",
+    "@_ios.simulator.x86_64/graphql_ppx": "*",
+    "@_ios.simulator.x86_64/ocaml": "*",
+    "@_ios.simulator.x86_64/sysroot": "*",
+    "generate-installer": "*"
+  },
+  "resolutions": {
+    "@esy-ocaml/reason": "3.6.2",
+    "@esy-ocaml/substs": "0.0.1",
+    "@opam/base-bytes": "opam:base",
+    "@opam/base-threads": "opam:base",
+    "@opam/base-unix": "opam:base",
+    "@opam/bigarray-compat": "opam:1.0.0",
+    "@opam/biniou": "opam:1.2.1",
+    "@opam/conf-m4": "opam:1",
+    "@opam/conf-pkg-config": "opam:2",
+    "@opam/cppo": "opam:1.6.7",
+    "@opam/csexp": "opam:1.3.2",
+    "@opam/cstruct": "opam:6.0.0",
+    "@opam/dot-merlin-reader": "opam:4.1",
+    "@opam/dune-build-info": "opam:2.8.2",
+    "@opam/dune-configurator": "opam:2.8.2",
+    "@opam/dune": "opam:2.8.2",
+    "@opam/easy-format": "opam:1.3.2",
+    "@opam/eqaf": "opam:0.7",
+    "@opam/fix": "opam:20201120",
+    "@opam/hex": "opam:1.4.0",
+    "@opam/lwt": "opam:5.3.0",
+    "@opam/menhir": "opam:20201216",
+    "@opam/menhirLib": "opam:20201216",
+    "@opam/menhirSdk": "opam:20201216",
+    "@opam/merlin-extend": "opam:0.6",
+    "@opam/mirage-crypto": "opam:0.8.10",
+    "@opam/mmap": "opam:1.1.0",
+    "@opam/ocaml-compiler-libs": "opam:v0.12.3",
+    "@opam/ocaml-lsp-server": "opam:1.4.0",
+    "@opam/ocaml-migrate-parsetree": "opam:1.8.0",
+    "@opam/ocamlfind": "opam:1.8.1",
+    "@opam/ocplib-endian": "opam:1.1",
+    "@opam/ppx_derivers": "opam:1.2.1",
+    "@opam/ppx_deriving": "opam:4.5",
+    "@opam/ppx_deriving_yojson": "opam:3.5.3",
+    "@opam/ppx_tools": "opam:6.3",
+    "@opam/ppx_tools_versioned": "opam:5.2.3",
+    "@opam/ppx_yojson_conv_lib": "opam:v0.14.0",
+    "@opam/ppxfind": "opam:1.4",
+    "@opam/ppxlib": "opam:0.15.0",
+    "@opam/re": "opam:1.9.0",
+    "@opam/reason": "opam:3.6.2",
+    "@opam/result": "opam:1.5",
+    "@opam/seq": "opam:base",
+    "@opam/sexplib0": "opam:v0.14.0",
+    "@opam/stdlib-shims": "opam:0.3.0",
+    "@opam/yojson": "opam:1.7.0",
+    "brisk-reconciler":
+      "github:briskml/brisk-reconciler#c9d5c4cf5dd17ff2da994de2c3b0f34c72778f70",
+    "esy-m4":
+      "github:esy-packages/esy-m4#c7cf0ac9221be2b1f9d90e83559ca08397a629e7",
+    "generate":
+      "github:EduardoRFS/reason-mobile:generate.json#543d302e3eb565abb2af640860789f3f9cffc15f",
+    "graphql-ppx":
+      "github:reasonml-community/graphql-ppx#200310436aa8cf4cb53202def0bcf0e17f281062",
+    "hello-reason": "link-dev:./package.json",
+    "ocaml": "4.10.2000",
+    "@_ios.simulator.x86_64/_esy_ocaml_reason": ".mocks/50edc614/esy.json",
+    "@_ios.simulator.x86_64/_esy_ocaml_substs": ".mocks/ca3b747a/esy.json",
+    "@_ios.simulator.x86_64/_opam_base_bytes": ".mocks/d108d0b1/esy.json",
+    "@_ios.simulator.x86_64/_opam_base_threads": ".mocks/3a45931b/esy.json",
+    "@_ios.simulator.x86_64/_opam_base_unix": ".mocks/eec2c7a4/esy.json",
+    "@_ios.simulator.x86_64/_opam_bigarray_compat":
+      ".mocks/91b28c3d/esy.json",
+    "@_ios.simulator.x86_64/_opam_biniou": ".mocks/f78a3fae/esy.json",
+    "@_ios.simulator.x86_64/_opam_conf_m4": ".mocks/974b939a/esy.json",
+    "@_ios.simulator.x86_64/_opam_conf_pkg_config":
+      ".mocks/8afa3e70/esy.json",
+    "@_ios.simulator.x86_64/_opam_cppo": ".mocks/9bc6d88a/esy.json",
+    "@_ios.simulator.x86_64/_opam_csexp": ".mocks/0a801dd5/esy.json",
+    "@_ios.simulator.x86_64/_opam_cstruct": ".mocks/c5bef05c/esy.json",
+    "@_ios.simulator.x86_64/_opam_dot_merlin_reader":
+      ".mocks/8ec50713/esy.json",
+    "@_ios.simulator.x86_64/_opam_dune_build_info":
+      ".mocks/7d4c4f0f/esy.json",
+    "@_ios.simulator.x86_64/_opam_dune_configurator":
+      ".mocks/1ec8cb48/esy.json",
+    "@_ios.simulator.x86_64/_opam_dune": ".mocks/ced9d805/esy.json",
+    "@_ios.simulator.x86_64/_opam_easy_format": ".mocks/e65f9294/esy.json",
+    "@_ios.simulator.x86_64/_opam_eqaf": ".mocks/2b114601/esy.json",
+    "@_ios.simulator.x86_64/_opam_fix": ".mocks/fa775bda/esy.json",
+    "@_ios.simulator.x86_64/_opam_hex": ".mocks/e7e0989b/esy.json",
+    "@_ios.simulator.x86_64/_opam_lwt": ".mocks/98930702/esy.json",
+    "@_ios.simulator.x86_64/_opam_menhir": ".mocks/d883af81/esy.json",
+    "@_ios.simulator.x86_64/_opam_menhirLib": ".mocks/7fc35326/esy.json",
+    "@_ios.simulator.x86_64/_opam_menhirSdk": ".mocks/9a29af60/esy.json",
+    "@_ios.simulator.x86_64/_opam_merlin_extend": ".mocks/85b21d8f/esy.json",
+    "@_ios.simulator.x86_64/_opam_mirage_crypto": ".mocks/1c9d7f48/esy.json",
+    "@_ios.simulator.x86_64/_opam_mmap": ".mocks/4408fcaa/esy.json",
+    "@_ios.simulator.x86_64/_opam_ocaml_compiler_libs":
+      ".mocks/a52d3ad6/esy.json",
+    "@_ios.simulator.x86_64/_opam_ocaml_lsp_server":
+      ".mocks/5b813ed9/esy.json",
+    "@_ios.simulator.x86_64/_opam_ocaml_migrate_parsetree":
+      ".mocks/ee623021/esy.json",
+    "@_ios.simulator.x86_64/_opam_ocamlfind": ".mocks/9521678f/esy.json",
+    "@_ios.simulator.x86_64/_opam_ocplib_endian": ".mocks/293ce77e/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppx_derivers": ".mocks/fc32060c/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppx_deriving": ".mocks/da950c03/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppx_deriving_yojson":
+      ".mocks/f99bdb77/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppx_tools": ".mocks/0590469c/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppx_tools_versioned":
+      ".mocks/923c4663/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppx_yojson_conv_lib":
+      ".mocks/8ee3c234/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppxfind": ".mocks/7e2444cc/esy.json",
+    "@_ios.simulator.x86_64/_opam_ppxlib": ".mocks/66985ee0/esy.json",
+    "@_ios.simulator.x86_64/_opam_re": ".mocks/d01bdefa/esy.json",
+    "@_ios.simulator.x86_64/_opam_reason": ".mocks/91217017/esy.json",
+    "@_ios.simulator.x86_64/_opam_result": ".mocks/12ab8567/esy.json",
+    "@_ios.simulator.x86_64/_opam_seq": ".mocks/3f2ea744/esy.json",
+    "@_ios.simulator.x86_64/_opam_sexplib0": ".mocks/c01c8fbf/esy.json",
+    "@_ios.simulator.x86_64/_opam_stdlib_shims": ".mocks/e7a6d5d6/esy.json",
+    "@_ios.simulator.x86_64/_opam_yojson": ".mocks/98d606e2/esy.json",
+    "@_ios.simulator.x86_64/brisk_reconciler": ".mocks/ae978479/esy.json",
+    "@_ios.simulator.x86_64/esy_m4": ".mocks/89ec800c/esy.json",
+    "@_ios.simulator.x86_64/generate": ".mocks/23e7a394/esy.json",
+    "@_ios.simulator.x86_64/graphql_ppx": ".mocks/892c99e6/esy.json",
+    "@_ios.simulator.x86_64/hello_reason": ".mocks/f2d831f2/esy.json",
+    "@_ios.simulator.x86_64/ocaml": ".mocks/bee48cdc/esy.json",
+    "generate-installer": ".mocks/f068e835/package.json",
+    "sysroot.tools": ".mocks/a9099116/package.json",
+    "@_ios.simulator.x86_64/sysroot": ".mocks/29ebc573/package.json"
+  },
+  "esy": {
+    "buildsInSource": false,
+    "buildEnv": {
+      "DUNE_BUILD_DIR":
+        "#{self.original_root}/_esy/default/store/b/hello_reason-bd91845e",
+      "cur__etc":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/etc",
+      "cur__share":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/share",
+      "cur__toplevel":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/toplevel",
+      "cur__stublibs":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/stublibs",
+      "cur__doc":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/doc",
+      "cur__man":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/man",
+      "cur__lib":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/lib",
+      "cur__sbin":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/sbin",
+      "cur__bin":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e/bin",
+      "cur__install":
+        "#{self.original_root}/_esy/default/store/i/hello_reason-bd91845e",
+      "cur__original_root": "#{self.original_root}",
+      "OCAMLFIND_CONF": "%{store}%/findlib/#{self.id}/findlib.conf",
+      "OCAMLFIND_DESTDIR": "#{self.install}/ios.simulator.x86_64-sysroot/lib",
+      "TOPKG_CONF_TOOLCHAIN": "ios.simulator.x86_64",
+      "OCAMLLIB": null,
+      "OCAMLPATH": null
+    },
+    "exportedEnv": {},
+    "build": [
+      [ "dune", "build", "@all", "-x", "ios.simulator.x86_64", "@install" ]
+    ],
+    "install": []
+  }
+}
