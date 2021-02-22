@@ -1,6 +1,6 @@
 (executable
  (name hello)
- (modules Hello NativeComponents Objc React Benchmarks GraphQL)
+ ; (modules Hello NativeComponents Objc React Benchmarks GraphQL)
  (libraries brisk-reconciler lwt)
  (modes
   (native object))

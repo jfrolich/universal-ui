@@ -121,7 +121,7 @@ void caml_CGRect_log(value gcRect) {
 value caml_objc_getClass(value className) {
   CAMLparam1(className);
   Class class_ = objc_getClass(String_val(className));
-  
+
   NSLog(@"class with pointer %s - %lld", String_val(className), class_);
   CAMLreturn(to_ocaml_int(class_));
 }
@@ -132,7 +132,7 @@ value caml_objc_msgSend_sel(value obj, value selector) {
   //SEL selector_ = sel_registerName(String_val(selector));
   //SEL selector_ = to_c_int(selector);
   //NSLog(@"calling %lld - %s", (id) to_c_int(obj), String_val(selector));
-  
+
   id (*typed_msgSend)(id, SEL) = (id)objc_msgSend;
 
   id result = typed_msgSend((id) to_c_int(obj), to_c_int(selector));
@@ -173,7 +173,7 @@ void caml_objc_msgSend_noalloc(value obj, value selector) {
   typed_msgSend((id) to_c_int(obj), to_c_int(selector));
   //NSLog(@"Result -> %lld", result);
   //CAMLlocal1(result_);
-  
+
 }
 
 
@@ -181,7 +181,7 @@ value caml_objc_msgSend_stret(value stret, value obj, value selector) {
   CAMLparam3(stret, obj, selector);
   SEL selector_ = sel_registerName(String_val(selector));
   void *str = Data_custom_val(stret);
-  
+
   //value res = caml_alloc_custom(&objc_cgrect, sizeof(CGRect), 0, 1);
   //
   #if defined(__x86_64__)
@@ -200,9 +200,9 @@ value caml_objc_msgSend_stret(value stret, value obj, value selector) {
     CAMLreturn(0);
   }
 
-  
+
   #endif
-  
+
   CAMLreturn(stret);
 }
 
@@ -216,7 +216,7 @@ value caml_objc_msgSendSuper(value obj, value selector) {
     receiver: obj_,
     super_class: class_getSuperclass([obj_ class])
   };
-  
+
   id (*typed_msgSend)(id, SEL) = (id)objc_msgSendSuper;
   id result = typed_msgSend(&op, selector_);
   NSLog(@"Result -> %p", result);
@@ -226,7 +226,7 @@ value caml_objc_msgSendSuper(value obj, value selector) {
 
 value caml_objc_msgSend1(value obj, value selector, value arg1) {
   CAMLparam3(obj, selector, arg1);
-  
+
   SEL selector_ = sel_registerName(String_val(selector));
   //NSLog(@"calling %lld - %s - %lld", to_c_int(obj), String_val(selector), to_c_int(arg1));
   id (*typed_msgSend)(id, SEL, id) = (id)objc_msgSend;
@@ -241,7 +241,7 @@ long caml_objc_msgSend1_str(value obj, value selector, value arg1) {
   //CAMLlocal1(result)
   SEL selector_ = sel_registerName(String_val(selector));
   id (*typed_msgSend)(id, SEL, id) = (id)objc_msgSend;
-  
+
   // both ints and pointers will be shifted, so they are correctly
   // represented
   if (Is_long(arg1) || Is_Int64(arg1)) {
@@ -269,9 +269,9 @@ long caml_objc_msgSend1_str(value obj, value selector, value arg1) {
 value caml_blablaSetText(value view) {
   CAMLparam1(view);
   CGRect rect =[to_c_int(view) bounds];
-  
+
   NSLog(@"BLABLA: (%f, %f, %f, %f)", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-    
+
   CAMLreturn(to_ocaml_int(0.));
 }
 
@@ -358,9 +358,9 @@ long caml_objc_getProtocol(value name) {
 static long caml_objc_meth_callback0(id subClass, SEL selector) {
   CAMLparam0();
   CAMLlocal3(subClass_, selector_, result);
-  
+
   caml_acquire_runtime_system();
-  
+
   subClass_ = to_ocaml_int(subClass);
   selector_ = to_ocaml_int(selector);
 
@@ -374,16 +374,16 @@ static long caml_objc_meth_callback0(id subClass, SEL selector) {
 static long caml_objc_meth_callback1(id subClass, SEL selector, id arg1) {
   CAMLparam0();
   CAMLlocal4(subClass_, selector_, arg1_, result);
-  
+
   caml_acquire_runtime_system();
-  
+
   subClass_ = to_ocaml_int(subClass);
   selector_ = to_ocaml_int(selector);
   arg1_ = to_ocaml_int(arg1);
-  
+
   NSLog(@"C - Callback1");
   result = caml_callback3(*caml_named_value("objc_meth_callback1"), to_ocaml_int(subClass), to_ocaml_int(selector), to_ocaml_int(arg1));
-  
+
   caml_release_runtime_system();
   CAMLreturnT(long, to_c_int(result));
 }
@@ -392,17 +392,17 @@ static long caml_objc_meth_callback2(id subClass, SEL selector, id arg1, id arg2
   NSLog(@"C - Callback2");
   CAMLparam0();
   CAMLlocalN(args, 5);
-  
+
   CAMLlocal1(result);
   caml_acquire_runtime_system();
-  
+
   args[0] = to_ocaml_int(subClass);
   args[1] = to_ocaml_int(selector);
   args[2] = to_ocaml_int(arg1);
   args[3] = to_ocaml_int(arg2);
-  
+
   result = caml_callbackN(*caml_named_value("objc_meth_callback2"), 4, args);
-  
+
   caml_release_runtime_system();
   CAMLreturnT(long, to_c_int(result));
 }
@@ -410,12 +410,12 @@ static long caml_objc_meth_callback2(id subClass, SEL selector, id arg1, id arg2
 static long caml_objc_meth_callback3(id subClass, SEL selector, id arg1, id arg2, id arg3) {
   CAMLparam0();
   CAMLlocalN(args, 5);
-  
+
   CAMLlocal1(result);
   caml_acquire_runtime_system();
-  
+
   NSLog(@"C - Callback3, %ld, %ld, %ld -- %s", [subClass class], (subClass), (selector), sel_getName(selector));
-  
+
   args[0] = to_ocaml_int(subClass);
   args[1] = to_ocaml_int(selector);
   args[2] = to_ocaml_int(arg1);
@@ -471,11 +471,11 @@ void caml_objc_class_addMethod(value subClass, value selector, long arity, long 
   char typeEncodingIncludingReturnType[10];
   returnType = to_c_int(returnType);
   arity = to_c_int(arity);
-  
-  
+
+
   NSLog(@"Add method %ld (%ld, %ld)", arity, to_c_int(subClass), to_c_int(selector));
   NSLog(@"returnType: %ld", returnType);
-  
+
   switch (arity) {
     case 0:
       NSLog(@"Arity is 0");
@@ -502,15 +502,6 @@ void caml_objc_class_addMethod(value subClass, value selector, long arity, long 
   class_addMethod((Class)to_c_int(subClass), (SEL) to_c_int(selector), fn, typeEncodingIncludingReturnType);
 }
 
-static long caml_objc_block_callback0(id blockPointer) {
-  CAMLparam0();
-  caml_acquire_runtime_system();
-  CAMLlocal2(blockPointer_, result);
-  blockPointer_ = to_ocaml_int((long) blockPointer);
-  result = caml_callback(*caml_named_value("objc_block_callback0"), blockPointer_);
-  caml_release_runtime_system();
-  CAMLreturnT(long, to_c_int(result));
-}
 
 // copied from OCAML 4.11! This can be removed later
 /* [len] is a number of bytes (chars) */
@@ -534,24 +525,48 @@ value caml_nsdata_to_string (NSData* data) {
   CAMLreturn(result);
 }
 
+// void caml_objc_run_on_main(id (^( blockPointer))(void)) {
+void caml_objc_run_on_main(value blockPointer) {
+  CAMLparam1(blockPointer);
+  CAMLlocal1(blockPointer_);
+  blockPointer_ = to_c_int(blockPointer);
+  NSLog(@"RUNNIGN ON MAIN %lld", blockPointer_);
+  //dispatch_async(dispatch_get_main_queue(), (*(dispatch_block_t *) blockPointer));
+  (*(dispatch_block_t *) blockPointer)();
+  NSLog(@"RAN");
+  return;
+}
+
+static long caml_objc_block_callback0(id blockPointer) {
+  CAMLparam0();
+  caml_acquire_runtime_system();
+
+  CAMLlocal2(blockPointer_, result);
+  blockPointer_ = to_ocaml_int(blockPointer);
+  result = caml_callback(*caml_named_value("objc_block_callback0"), blockPointer_);
+  caml_release_runtime_system();
+  CAMLreturnT(long, to_c_int(result));
+}
+
+
 static long caml_objc_block_callback3(id blockPointer, id arg1, id arg2, id arg3) {
   CAMLparam0();
   caml_acquire_runtime_system();
-  
+
   CAMLlocal1(result);
-  
+
   NSLog(@"Block callback!");
-  
-  
+
   dispatch_async(dispatch_get_main_queue(), ^{
     CAMLlocalN(args, 4);
     args[0] = to_ocaml_int(blockPointer);
     args[1] = to_ocaml_int(arg1);
     args[2] = to_ocaml_int(arg2);
     args[3] = to_ocaml_int(arg3);
+    //result =
     caml_callbackN(*caml_named_value("objc_block_callback3"), 4, args);
   });
-  
+
   NSLog(@"Did call callback, returning...");
   caml_release_runtime_system();
   CAMLreturnT(long, to_c_int(result));
@@ -559,11 +574,13 @@ static long caml_objc_block_callback3(id blockPointer, id arg1, id arg2, id arg3
 
 value caml_objc_createBlock0() {
   __block id blockPointer = 0;
-  blockPointer = (^{
-    return caml_objc_block_callback0(blockPointer);
-  });
-  
-  return to_ocaml_int((long) [[blockPointer copy] autorelease]);
+  [[blockPointer = (^{
+      return caml_objc_block_callback0(blockPointer);
+    }) copy] autorelease];
+
+  NSLog(@"Create block 0 %lld", blockPointer);
+
+  return to_ocaml_int((long) blockPointer);
 }
 
 value caml_objc_createBlock3() {
@@ -571,7 +588,7 @@ value caml_objc_createBlock3() {
   blockPointer = [[(^(id arg1, id arg2, id arg3){
     return caml_objc_block_callback3(blockPointer, arg1, arg2, arg3);
   }) copy] autorelease];
-  
+
   return to_ocaml_int((long) blockPointer);
 }
 
@@ -599,7 +616,7 @@ long caml_objc_allocateClassPair(long superClass, value className, long size) {
 void caml_objc_registerClassPair(value class) {
   NSLog(@"Register class pair %lld", to_c_int(class));
   Class class_ = to_c_int(class);
-  
+
   if (class_) {
     objc_registerClassPair((Class) class_);
   }

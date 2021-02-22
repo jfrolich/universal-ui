@@ -1,5 +1,10 @@
 open Objc;
+open UIKit;
 open NativeComponents;
+
+type navScreen =
+  (~key: React.Key.t=?, ~frame: CGRect.t, ~push: value(obj) => unit, unit) =>
+  React.element(value(obj));
 
 [%graphql
   {|
@@ -21,41 +26,8 @@ let reducer = (action, state) =>
   | Decrement => state - 1
   };
 
-let%component app = () => {
-  let%hook (state, dispatch) = React.Hooks.reducer(~initialState=0, reducer);
-  <>
-    <text
-      text={"Count = " ++ string_of_int(state)}
-      frame={CGRect.make(115., 150., 200., 30.)}
-    />
-    <button
-      text="Decrement"
-      frame={CGRect.make(110.0, 200.0, 100.0, 30.0)}
-      onPress={() => dispatch(Decrement)}
-    />
-    <button
-      text="Increment"
-      frame={CGRect.make(110.0, 300.0, 100.0, 30.0)}
-      onPress={() => dispatch(Increment)}
-    />
-  </>
-  |> React.listToElement;
-};
-
-module HelloViewController: {let cls: NSClass.t;} = {
-  // global state for now
-  let cls =
-    getClass("UIViewController")
-    |> allocateClassPair(~name="HelloRootViewController", ~size=0);
-
-  cls |> addMethod("viewDidLoad", ~returnType=Void);
-  cls |> addMethod("dealloc", ~returnType=Void);
-
-  let _ = registerClassPair(cls);
-};
-
 let createDetailVC = component => {
-  let vc = HelloViewController.cls |> send0(alloc);
+  let vc = BasicViewController.cls |> send0(alloc);
   log("Creating Detail VC2, instance: " ++ NSObject.toString(vc));
 
   let unsubscribe = ref(None);
@@ -95,19 +67,37 @@ let createDetailVC = component => {
   vc |> send0(init);
 };
 
+let%component counter = () => {
+  let%hook (state, dispatch) = React.Hooks.reducer(~initialState=0, reducer);
+  <>
+    <text
+      text={"Count = " ++ string_of_int(state)}
+      frame={CGRect.make(115., 150., 200., 30.)}
+    />
+    <button
+      text="Decrement"
+      frame={CGRect.make(110.0, 200.0, 100.0, 30.0)}
+      onPress={() => dispatch(Decrement)}
+    />
+    <button
+      text="Increment"
+      frame={CGRect.make(110.0, 300.0, 100.0, 30.0)}
+      onPress={() => dispatch(Increment)}
+    />
+  </>
+  |> React.listToElement;
+};
 let%component firstScreen = (~frame, ~push, ()) => {
   let%hook (titles, setTitles) = React.Hooks.state(["loollll"]);
   let%hook () =
     React.Hooks.effect(
       React.Hooks.Effect.OnMount,
       () => {
-        log("FETTCHING>>>");
+        log("MOUNTING FIRST SCREEN");
         GraphQL.fetch(
           "https://api.spacex.land/graphql",
           LaunchesQuery.query,
           result => {
-            log("RESULT OF QUERY:");
-            log(">>>" ++ result ++ "<<<");
             let json = Yojson.Basic.from_string(result);
             let data =
               switch (json) {
@@ -123,10 +113,8 @@ let%component firstScreen = (~frame, ~push, ()) => {
               | _ => None
               };
 
-            log("OK we have some data!!");
             switch (data) {
             | Some(data) =>
-              log("FOUND data");
               let titles =
                 switch (
                   LaunchesQuery.parse(LaunchesQuery.unsafe_fromJson(data))
@@ -141,12 +129,6 @@ let%component firstScreen = (~frame, ~push, ()) => {
                   |> List.filter_map(a => a)
                 | _ => []
                 };
-              log(
-                "titles"
-                ++ (
-                  titles |> List.fold_left((acc, title) => acc ++ title, "")
-                ),
-              );
               setTitles(_ => titles);
             | None => ()
             };
@@ -159,22 +141,13 @@ let%component firstScreen = (~frame, ~push, ()) => {
   <tableView
     frame
     titles={titles |> Array.of_list}
-    onPress={(section, row) => {
-      log(
-        "Click from section: "
-        ++ Int64.to_string(section)
-        ++ "and row: "
-        ++ Int64.to_string(row),
-      );
-
-      push(createDetailVC(app));
-    }}
+    onPress={(_section, _row) => {push(createDetailVC(counter))}}
   />;
 };
 
-let createRootVC = render => {
+let createRootVC = (~push, component: navScreen) => {
   log("Creating RootVC 2");
-  let vc = HelloViewController.cls |> send0(alloc);
+  let vc = BasicViewController.cls |> send0(alloc);
   let unsubscribeRootVC = ref(None);
 
   vc
@@ -196,7 +169,10 @@ let createRootVC = render => {
          let viewFrame = bounds;
 
          let unsubscribe_: unit => unit =
-           React.createRoot(view, render(viewFrame));
+           React.createRoot(
+             view,
+             <component frame=viewFrame push key={React.Key.create()} />,
+           );
 
          unsubscribeRootVC := Some(unsubscribe_);
 
@@ -269,10 +245,7 @@ module SceneDelegate = {
            navigationViewController
            |> msgSend1(
                 ~sel="initWithRootViewController:",
-                ~arg=
-                  createRootVC(viewFrame =>
-                    <firstScreen frame=viewFrame push />
-                  ),
+                ~arg=createRootVC(~push, firstScreen),
               );
 
          let _ =

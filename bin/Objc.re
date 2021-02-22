@@ -201,9 +201,6 @@ let methods3:
   Hashtbl.t((int64, int64), (int64, int64, int64, int64) => return) =
   Hashtbl.create(100);
 
-let blockCallbacks3: Hashtbl.t(int64, (int64, int64, int64) => return) =
-  Hashtbl.create(100);
-
 let callback0 = (instance: int64, selector: int64) => {
   log(
     "Callback0: "
@@ -272,6 +269,10 @@ let callback3 =
 };
 Callback.register("objc_meth_callback3", callback3);
 
+let blockCallbacks3: Hashtbl.t(int64, (int64, int64, int64) => return) =
+  Hashtbl.create(100);
+let blockCallbacks0: Hashtbl.t(int64, unit => return) = Hashtbl.create(100);
+
 let blockCallback3 =
     (blockPointer: int64, arg1: int64, arg2: int64, arg3: int64) => {
   log("Running blockcallback!");
@@ -279,7 +280,8 @@ let blockCallback3 =
   | Some(fn) => fn(arg1, arg2, arg3)
   | None =>
     log(
-      "ERROR: block callback not found!: " ++ Int64.to_string(blockPointer),
+      "ERROR: block callback not found in 0!: "
+      ++ Int64.to_string(blockPointer),
     );
     Hashtbl.iter(
       (key, _) => log("Found " ++ Int64.to_string(key)),
@@ -289,6 +291,23 @@ let blockCallback3 =
   };
 };
 Callback.register("objc_block_callback3", blockCallback3);
+
+let blockCallback0 = (blockPointer: int64) => {
+  switch (Hashtbl.find_opt(blockCallbacks0, blockPointer)) {
+  | Some(fn) => fn()
+  | None =>
+    log(
+      "ERROR: block callback not found in 3!: "
+      ++ Int64.to_string(blockPointer),
+    );
+    Hashtbl.iter(
+      (key, _) => log("Found " ++ Int64.to_string(key)),
+      blockCallbacks3,
+    );
+    0L;
+  };
+};
+Callback.register("objc_block_callback0", blockCallback0);
 
 type returnType =
   | Void
@@ -321,11 +340,18 @@ let addMethod = (selector, ~returnType, cls) => {
 };
 
 external createBlock3_: unit => int64 = "caml_objc_createBlock3";
+external createBlock0_: unit => int64 = "caml_objc_createBlock0";
 
 let createBlock3 = fn => {
   let blockPtr = createBlock3_();
   log("Block pointer is" ++ Int64.to_string(blockPtr));
   Hashtbl.replace(blockCallbacks3, blockPtr, fn);
+  blockPtr;
+};
+
+let createBlock0 = fn => {
+  let blockPtr = createBlock0_();
+  Hashtbl.replace(blockCallbacks0, blockPtr, fn);
   blockPtr;
 };
 
@@ -377,6 +403,9 @@ module UIColor = {
 
 external fromCString: ([@unboxed] int64, [@unboxed] int64) => string =
   "caml_from_c_string" "caml_from_c_string";
+
+external runOnMainThread: int64 => unit =
+  "caml_objc_run_on_main" "caml_objc_run_on_main";
 
 module NSData = {
   external toString: ([@unboxed] int64) => string =

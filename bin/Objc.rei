@@ -245,6 +245,7 @@ let removeCallback3: (NSObject.t('a), NSSelector.t) => unit;
 // Blocks
 ////////////////////////////////////////////////////////////////////////////////
 
+let createBlock0: (unit => return) => NSObject.t(block);
 let createBlock3:
   ((NSObject.t('a), NSObject.t('b), NSObject.t('c)) => return) =>
   NSObject.t(block);
@@ -268,6 +269,7 @@ module UIColor: {
 };
 
 let fromCString: (NSObject.t('a), int64) => string;
+let runOnMainThread: NSObject.t(block) => unit;
 
 module NSData: {let toString: NSObject.t('a) => string;};
 

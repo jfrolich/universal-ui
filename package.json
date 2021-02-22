@@ -6,7 +6,8 @@
   },
   "scripts": {
     "start": "#{self.target_dir}/default/bin/hello.exe",
-    "watch": "esy @ios.simulator.x86_64 b dune build @all -x ios.simulator.x86_64 --watch"
+    "watch": "esy  b dune build @all --watch",
+    "watch-ios-simulator": "esy @ios.simulator.x86_64 b dune build @all -x ios.simulator.x86_64 --watch"
   },
   "dependencies": {
     "@esy-ocaml/reason": "^3.5.2",
