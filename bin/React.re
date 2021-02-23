@@ -14,6 +14,7 @@ let deleteNode = (~parent, ~child, ~position as _) => {
 };
 
 let moveNode = (~parent, ~child as _, ~from as _, ~to_ as _) => {
+  log("---> MOVE NODE...");
   parent;
 };
 
@@ -22,18 +23,24 @@ let onStale = RemoteAction.create();
 addStaleTreeHandler(() => onStale |> RemoteAction.send(~action=()));
 
 let executeUpdates = element => {
+  let newElement = ref(element);
   // execute the updates on the main thread
   let makeUpdates = () => {
+    log("Making updates......");
     let _ = RenderedElement.executeHostViewUpdates(element);
-    let _ = RenderedElement.executePendingEffects(element);
+    newElement := RenderedElement.executePendingEffects(element);
     returnUnit();
   };
-  // if (getClass("NSThread") |> send0(sel("isMainThread")) != nil) {
-  //   let _ = makeUpdates();
-  //   ();
-  // } else {
-  makeUpdates |> createBlock0 |> runOnMainThread;
-  // };
+
+  if (getClass("NSThread") |> send0(sel("isMainThread")) != nil) {
+    log("RUNNIGN ON MAIN THREAD");
+    let _ = makeUpdates();
+    ();
+  } else {
+    log("RUNNIGN ON OTHER THREAD");
+    makeUpdates |> createBlock0 |> runOnMainThread;
+  };
+  newElement^;
 };
 
 let createRoot = (view, element) => {
@@ -46,15 +53,15 @@ let createRoot = (view, element) => {
       ),
     );
 
-  executeUpdates(rendered^);
+  rendered := executeUpdates(rendered^);
 
   let unsubscribe =
     onStale
     |> RemoteAction.subscribe(~handler=() => {
          log("---------------->>>> rerendering root");
          let nextElement = RenderedElement.flushPendingUpdates(rendered^);
-         executeUpdates(nextElement);
-         rendered := nextElement;
+         let element = executeUpdates(nextElement);
+         rendered := element;
        });
 
   unsubscribe;

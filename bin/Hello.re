@@ -98,6 +98,8 @@ let%component firstScreen = (~frame, ~push, ()) => {
           "https://api.spacex.land/graphql",
           LaunchesQuery.query,
           result => {
+            log("RESULT");
+            log(result);
             let json = Yojson.Basic.from_string(result);
             let data =
               switch (json) {
@@ -129,6 +131,7 @@ let%component firstScreen = (~frame, ~push, ()) => {
                   |> List.filter_map(a => a)
                 | _ => []
                 };
+
               setTitles(_ => titles);
             | None => ()
             };

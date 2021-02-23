@@ -130,6 +130,7 @@ let%nativeComponent tableView =
 
   {
     React.make: () => {
+      log("->>>>>MAKING TABLEVIEW");
       let view = classToObj("UITableView") |> msgSend(~sel="alloc");
 
       tableViewDelegate :=
@@ -151,6 +152,7 @@ let%nativeComponent tableView =
       view;
     },
     configureInstance: (~isFirstRender, view) => {
+      log("->>>>>CONFIGURING TABLEVIEW");
       storedTitles.contents = titles;
       if (isFirstRender) {
         log("--> First Render of TableView " ++ NSObject.toString(view));
