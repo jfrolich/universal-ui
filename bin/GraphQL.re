@@ -23,8 +23,8 @@ let fetch = (url, query, callback) => {
          "",
        );
   let requestStr = {|{"query": "|} ++ query ++ {|", "variables": null}|};
-  log("REquest body");
-  log(requestStr);
+  // log("REquest body");
+  // log(requestStr);
 
   let requestBody =
     getClass("NSData")
@@ -44,7 +44,7 @@ let fetch = (url, query, callback) => {
        );
 
   let completionHandler =
-    createBlock3((data, _response, _error) => {
+    createSingleUseBlock3((data, _response, _error) => {
       // let description = data |> send0(sel("description"));
       // NSString *myString = [[NSString alloc] initWithData:myData encoding:NSUTF8StringEncoding];
       let string = NSData.toString(data);
@@ -58,7 +58,6 @@ let fetch = (url, query, callback) => {
 
       // logObj(string);
       callback(string);
-
       returnUnit();
     });
 

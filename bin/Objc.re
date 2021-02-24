@@ -273,16 +273,12 @@ let blockCallbacks3: Hashtbl.t(int64, (int64, int64, int64) => return) =
   Hashtbl.create(100);
 let blockCallbacks0: Hashtbl.t(int64, unit => return) = Hashtbl.create(100);
 
-let blockCallback3 =
-    (blockPointer: int64, arg1: int64, arg2: int64, arg3: int64) => {
-  log("Running blockcallback!");
-  switch (Hashtbl.find_opt(blockCallbacks3, blockPointer)) {
+let blockCallback3 = (blockId: int64, arg1: int64, arg2: int64, arg3: int64) => {
+  log("Running blockcallback! " ++ Int64.to_string(blockId));
+  switch (Hashtbl.find_opt(blockCallbacks3, blockId)) {
   | Some(fn) => fn(arg1, arg2, arg3)
   | None =>
-    log(
-      "ERROR: block callback not found in 0!: "
-      ++ Int64.to_string(blockPointer),
-    );
+    log("ERROR: block callback not found in 3!");
     Hashtbl.iter(
       (key, _) => log("Found " ++ Int64.to_string(key)),
       blockCallbacks3,
@@ -292,14 +288,12 @@ let blockCallback3 =
 };
 Callback.register("objc_block_callback3", blockCallback3);
 
-let blockCallback0 = (blockPointer: int64) => {
-  switch (Hashtbl.find_opt(blockCallbacks0, blockPointer)) {
+let blockCallback0 = (blockId: int64) => {
+  log("Running blockcallback0! " ++ Int64.to_string(blockId));
+  switch (Hashtbl.find_opt(blockCallbacks0, blockId)) {
   | Some(fn) => fn()
   | None =>
-    log(
-      "ERROR: block callback not found in 3!: "
-      ++ Int64.to_string(blockPointer),
-    );
+    log("ERROR: block callback not found in 0!: ");
     Hashtbl.iter(
       (key, _) => log("Found " ++ Int64.to_string(key)),
       blockCallbacks3,
@@ -339,20 +333,50 @@ let addMethod = (selector, ~returnType, cls) => {
   addMethod_(cls, sel(selector), arity^, returnTypeToInt(returnType));
 };
 
-external createBlock3_: unit => int64 = "caml_objc_createBlock3";
-external createBlock0_: unit => int64 = "caml_objc_createBlock0";
+external createBlock3_: int64 => int64 = "caml_objc_createBlock3";
+external createBlock0_: int64 => int64 = "caml_objc_createBlock0";
 
-let createBlock3 = fn => {
-  let blockPtr = createBlock3_();
-  log("Block pointer is" ++ Int64.to_string(blockPtr));
-  Hashtbl.replace(blockCallbacks3, blockPtr, fn);
-  blockPtr;
+let blockId = ref(1L);
+let createBlockId = () => {
+  let newBlockId = blockId^;
+  blockId := Int64.add(blockId^, 1L);
+  newBlockId;
 };
 
 let createBlock0 = fn => {
-  let blockPtr = createBlock0_();
-  Hashtbl.replace(blockCallbacks0, blockPtr, fn);
-  blockPtr;
+  let blockId = createBlockId();
+  let blockPtr = createBlock0_(blockId);
+  Hashtbl.replace(blockCallbacks0, blockId, fn);
+  (blockPtr, () => Hashtbl.remove(blockCallbacks0, blockId));
+};
+let createSingleUseBlock0 = fn => {
+  let cleanup = ref(() => ());
+  let (ptr, returnedCleanup) =
+    createBlock0(() => {
+      let return = fn();
+      cleanup.contents();
+      return;
+    });
+  cleanup := returnedCleanup;
+  ptr;
+};
+
+let createBlock3 = fn => {
+  let blockId = createBlockId();
+  let blockPtr = createBlock3_(blockId);
+  Hashtbl.replace(blockCallbacks3, blockId, fn);
+  (blockPtr, () => Hashtbl.remove(blockCallbacks3, blockId));
+};
+let createSingleUseBlock3 = fn => {
+  let cleanup = ref(() => ());
+  let (ptr, returnedCleanup) =
+    createBlock3((a, b, c) => {
+      let return = fn(a, b, c);
+      cleanup.contents();
+      return;
+    });
+  cleanup := returnedCleanup;
+  ptr;
 };
 
 let addCallback = (selector, ~fn, instance) => {

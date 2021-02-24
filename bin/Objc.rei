@@ -245,8 +245,13 @@ let removeCallback3: (NSObject.t('a), NSSelector.t) => unit;
 // Blocks
 ////////////////////////////////////////////////////////////////////////////////
 
-let createBlock0: (unit => return) => NSObject.t(block);
+let createBlock0: (unit => return) => (NSObject.t(block), unit => unit);
 let createBlock3:
+  ((NSObject.t('a), NSObject.t('b), NSObject.t('c)) => return) =>
+  (NSObject.t(block), unit => unit);
+
+let createSingleUseBlock0: (unit => return) => NSObject.t(block);
+let createSingleUseBlock3:
   ((NSObject.t('a), NSObject.t('b), NSObject.t('c)) => return) =>
   NSObject.t(block);
 

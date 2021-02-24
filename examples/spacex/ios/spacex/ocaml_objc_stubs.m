@@ -515,9 +515,7 @@ value caml_from_c_string (long len, const char *p)
 
 value caml_nsdata_to_string (NSData* data) {
   CAMLparam1(data);
-  //  char nul = '\0';
   long len = [data length];
-//  value result = caml_alloc_string (len + 1);
   value result = caml_alloc_string (len);
 
   const char *p = [data bytes];
@@ -530,50 +528,33 @@ void caml_objc_run_on_main(value blockPointer) {
   CAMLparam1(blockPointer);
   CAMLlocal1(blockPointer_);
   blockPointer_ = to_c_int(blockPointer);
-  NSLog(@"RUNNIGN ON MAIN %lld", blockPointer_);
-  // dispatch_async(dispatch_get_main_queue(), (dispatch_block_t) blockPointer);
-  //  long (^block2)(void);
-  //  [[block2 = (^{
-  //    NSLog(@"Running block0---------------");
-  //    return 0l;
-  //    }) copy] autorelease];
-
-
 
   // need to wrap it like this. Otherwise it crashes
   dispatch_async(dispatch_get_main_queue(), ^{
     long (^block)(void) = (id) blockPointer_;
     block();
   });
-
-
- // NSLog(@"RAN");
-  return;
 }
 
-static long caml_objc_block_callback0(id blockPointer) {
+static long caml_objc_block_callback0(long blockId) {
   CAMLparam0();
   caml_acquire_runtime_system();
-  NSLog(@"RUNNING BLOCK CALLBACK0");
-
-  CAMLlocal2(blockPointer_, result);
-  blockPointer_ = to_ocaml_int(blockPointer);
-  result = caml_callback(*caml_named_value("objc_block_callback0"), blockPointer_);
+  CAMLlocal1(result);
+  result = caml_callback(*caml_named_value("objc_block_callback0"), to_ocaml_int(blockId));
   caml_release_runtime_system();
   CAMLreturnT(long, to_c_int(result));
 }
 
 
-static long caml_objc_block_callback3(id blockPointer, id arg1, id arg2, id arg3) {
+static long caml_objc_block_callback3(long blockId, id arg1, id arg2, id arg3) {
   CAMLparam0();
   caml_acquire_runtime_system();
-
   CAMLlocal1(result);
 
   NSLog(@"Block callback!");
 
   CAMLlocalN(args, 4);
-  args[0] = to_ocaml_int(blockPointer);
+  args[0] = to_ocaml_int(blockId);
   args[1] = to_ocaml_int(arg1);
   args[2] = to_ocaml_int(arg2);
   args[3] = to_ocaml_int(arg3);
@@ -585,23 +566,28 @@ static long caml_objc_block_callback3(id blockPointer, id arg1, id arg2, id arg3
   CAMLreturnT(long, to_c_int(result));
 }
 
-value caml_objc_createBlock0() {
-  __block id blockPointer = 0;
-  blockPointer = [(^{
+value caml_objc_createBlock0(value blockId) {
+  // its possible to make blockPointer accessible in the block with __block
+  // however it imposes a significant performance penalty
+  // and this doesn't work with autorelease (meaning we have to manually memory
+  // manage it, which is quite inconvenient in many cases)
+  // This is why we create an id in ocaml to keep track of the block
+  long blockId_ = to_c_int(blockId);
+  id blockPointer = [[(^{
     NSLog(@"Running block0");
-      return caml_objc_block_callback0(blockPointer);
-    }) copy] ;
+      return caml_objc_block_callback0(blockId_);
+    }) copy] autorelease];
 
-  NSLog(@"Create block 0 %lld", blockPointer);
+  NSLog(@"Create block 0 %lld with Id: %lld", blockPointer, blockId);
   return to_ocaml_int((long) blockPointer);
 }
 
-value caml_objc_createBlock3() {
-  __block id blockPointer = 0;
-  blockPointer = [[(^(id arg1, id arg2, id arg3){
-    return caml_objc_block_callback3(blockPointer, arg1, arg2, arg3);
+value caml_objc_createBlock3(value blockId) {
+  long blockId_ = to_c_int(blockId);
+  id blockPointer = [[(^(id arg1, id arg2, id arg3){
+    return caml_objc_block_callback3(blockId_, arg1, arg2, arg3);
   }) copy] autorelease];
-
+  NSLog(@"Create block 3 %lld with Id: %lld", blockPointer, blockId_);
   return to_ocaml_int((long) blockPointer);
 }
 

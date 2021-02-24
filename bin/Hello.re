@@ -98,8 +98,8 @@ let%component firstScreen = (~frame, ~push, ()) => {
           "https://api.spacex.land/graphql",
           LaunchesQuery.query,
           result => {
-            log("RESULT");
-            log(result);
+            // log("RESULT");
+            // log(result);
             let json = Yojson.Basic.from_string(result);
             let data =
               switch (json) {

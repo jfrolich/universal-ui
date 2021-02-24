@@ -38,7 +38,7 @@ let executeUpdates = element => {
     ();
   } else {
     log("RUNNIGN ON OTHER THREAD");
-    makeUpdates |> createBlock0 |> runOnMainThread;
+    makeUpdates |> createSingleUseBlock0 |> runOnMainThread;
   };
   newElement^;
 };
